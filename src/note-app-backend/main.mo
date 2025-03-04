@@ -1,5 +1,13 @@
-actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
+import Array "mo:base/Array";
+actor NoteApp {
+  stable var notes : [Text] = [];
+
+  public func addNote(note: Text) {
+    notes := Array.append(notes, [note]);
+  
+  };
+
+  public query func getNotes() : async [Text] {
+    return notes;
   };
 };
